@@ -138,7 +138,9 @@ function Slider() {
   const [selectedGuest, setSelectedGuest] = useState(guests[0]);
 
   const selectNewGuest = (index: number, guests: Guest[], next = true) => {
-    const condition = next ? selectedIndex < guests.length : selectedIndex > 0;
+    const condition = next
+      ? selectedIndex < guests.length - 1
+      : selectedIndex > 0;
     const nextIndex = next
       ? condition
         ? selectedIndex + 1
@@ -160,7 +162,16 @@ function Slider() {
 
   return (
     <>
-      <p>{selectedGuest.name}</p>
+      <div>
+        <img src={`/assets/images/${selectedGuest.image}`} alt="" />
+        <p>{selectedGuest.name}</p>
+        <p>
+          <a href={selectedGuest.youtube}>Youtube</a>
+        </p>
+        <p>{selectedGuest.description}</p>
+      </div>
+      <button onClick={previous}>{'<'}</button>
+      <button onClick={next}>{'>'}</button>
     </>
   );
 }

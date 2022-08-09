@@ -9,6 +9,10 @@ const NavbarContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   background-color: #aeaeae;
+  width: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
   h2 {
     font-weight: 700;
   }
@@ -55,7 +59,8 @@ const NavbarContainer = styled.div`
     @media screen and (min-width: 768px) {
       position: initial;
       margin: 0;
-      display: block;
+      display: flex;
+      align-items: baseline;
       a {
         font-size: 1rem;
         display: inline;
