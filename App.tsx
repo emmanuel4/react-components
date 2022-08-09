@@ -8,9 +8,7 @@ export default function App() {
   return (
     <div>
       <Navbar />
-      <CountdownTimer
-        countdownInMs = '09/02/2022'
-      />
+      <CountdownTimer countdownDate="09/02/2022" />
     </div>
   );
 }

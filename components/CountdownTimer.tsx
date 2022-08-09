@@ -28,17 +28,17 @@ function CountdownTimer({ countdownDate }) {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      updateTime(countdownDate);
+      const countdownTime = new Date(countdownDate).getTime();
+      updateTime(countdownTime);
     }, 1000);
     return () => clearInterval(intervalId);
   }, [countdownDate]);
 
-  const updateTime = (countdown) => {
+  const updateTime = (countdownTime) => {
     const second = 1000,
       minute = second * 60,
       hour = minute * 60,
       day = hour * 24;
-    let countdownTime = new Date(countdown).getTime();
     let now = new Date().getTime(),
       distance = countdownTime - now;
     const days = Math.floor(distance / day),
@@ -46,12 +46,12 @@ function CountdownTimer({ countdownDate }) {
       minutes = Math.floor((distance % hour) / minute),
       seconds = Math.floor((distance % minute) / second);
 
-    return {
-      days,
-      hours,
-      minutes,
-      seconds,
-    };
+    setTime({
+      days: days,
+      hours: hours,
+      minutes: minutes,
+      seconds: seconds,
+    });
   };
 
   return (
